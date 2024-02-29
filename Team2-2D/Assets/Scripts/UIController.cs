@@ -9,6 +9,8 @@ using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
+
+
     public void OnClickStart()
     {
         SceneManager.LoadScene("LevelOne");
@@ -31,5 +33,18 @@ public class UIController : MonoBehaviour
     public void OnClickCredits()
     {
         SceneManager.LoadScene("Credits");
+    }
+
+    private void Update()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+
+        if (currentSceneName == "HELP")
+        {
+            if(Input.GetKeyDown(KeyCode.Q))
+            {
+                SceneManager.LoadScene("MainMenu");
+            }
+        }
     }
 }
