@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Written by Jancy
+
 public class PlayerController : MonoBehaviour
 {
     private float horizontal;
