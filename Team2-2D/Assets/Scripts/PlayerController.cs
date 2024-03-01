@@ -3,46 +3,69 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
+
 //Written by Jancy
+
+
 
 public class PlayerController : MonoBehaviour
 {
+   
     private float horizontal;
     private float speed = 2f;
     private float jumpingPower = 5f;
     private bool isFacingRight = true;
-
+    public Animator animator;
     private bool doubleJump;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private int berriesCollected;
     [SerializeField] private TMP_Text berryScore;
-
+   
 
     void Update()
     {
         berryScore.text = "Score: " + berriesCollected;
         horizontal = Input.GetAxisRaw("Horizontal");
+        animator.SetFloat("Speed", Mathf.Abs(horizontal));
         if (IsGrounded() && !Input.GetButton("Jump"))
         {
+            animator.SetBool("IsDoubleJump", false);
+            animator.SetBool("IsJumping", false);
             doubleJump = false;
         }
+       
         if (Input.GetButtonDown("Jump"))
         {
+            animator.SetBool("IsJumping", true);
             if (IsGrounded() || doubleJump)
             {
+                
                 rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
 
                 doubleJump = !doubleJump;
+                if (!doubleJump)
+                {
+                    animator.SetBool("IsJumping", false);
+                    animator.SetBool("IsDoubleJump", true);
+                }
             }
+           
             
         }
+       
+
+
         if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
         {
+            
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            
         }
         Flip();
+        
     }
 
     private void FixedUpdate()
@@ -51,6 +74,7 @@ public class PlayerController : MonoBehaviour
     }
     private bool IsGrounded()
     {
+       
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
     private void Flip()
@@ -72,13 +96,22 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.tag == "Hazard") 
         {
-            string currentSceneName = SceneManager.GetActiveScene().name;
-            SceneManager.LoadScene(currentSceneName);
+            Invoke("DeathTransiton", 1.0f);
+            animator.SetBool("IsDead", true);
         }
         if (other.gameObject.tag == "Goal" && berriesCollected == 3)
         {
-
-            SceneManager.LoadScene("LevelTwo");
+            Invoke("LevelTransiton", 1.0f);
+            animator.SetBool("HasWon", true);
         }
+    }
+    void LevelTransiton() 
+    {
+        SceneManager.LoadScene("LevelTwo");
+    }
+    void DeathTransiton()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
     }
 }
