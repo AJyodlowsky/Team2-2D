@@ -23,11 +23,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private int berriesCollected;
     [SerializeField] private TMP_Text berryScore;
-   
+    [SerializeField] private TMP_Text darkBerryScore;
+    private AudioSource audioSource;
+    public AudioClip fruitSFX;
+    public AudioClip deathSFX;
+    public AudioClip jumpSFX;
+    public AudioClip goalSFX;
+    public AudioClip doubleJumpSFX;
 
     void Update()
     {
         berryScore.text = "Score: " + berriesCollected;
+        darkBerryScore.text = "Score: " + berriesCollected;
         horizontal = Input.GetAxisRaw("Horizontal");
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
         if (IsGrounded() && !Input.GetButton("Jump"))
@@ -39,6 +46,8 @@ public class PlayerController : MonoBehaviour
        
         if (Input.GetButtonDown("Jump"))
         {
+            audioSource.clip = jumpSFX;
+            audioSource.Play();
             animator.SetBool("IsJumping", true);
             if (IsGrounded() || doubleJump)
             {
@@ -48,6 +57,8 @@ public class PlayerController : MonoBehaviour
                 doubleJump = !doubleJump;
                 if (!doubleJump)
                 {
+                    audioSource.clip = doubleJumpSFX;
+                    audioSource.Play();
                     animator.SetBool("IsJumping", false);
                     animator.SetBool("IsDoubleJump", true);
                 }
@@ -93,16 +104,22 @@ public class PlayerController : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             berriesCollected++;
+            audioSource.clip = fruitSFX;
+            audioSource.Play();
         }
         if (other.gameObject.tag == "Hazard") 
         {
             Invoke("DeathTransiton", 1.0f);
             animator.SetBool("IsDead", true);
+            audioSource.clip = deathSFX;
+            audioSource.Play();
         }
         if (other.gameObject.tag == "Goal" && berriesCollected == 3)
         {
             Invoke("LevelTransiton", 1.0f);
             animator.SetBool("HasWon", true);
+            audioSource.clip = goalSFX;
+            audioSource.Play();
         }
     }
     void LevelTransiton() 
