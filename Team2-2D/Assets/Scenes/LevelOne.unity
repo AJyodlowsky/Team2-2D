@@ -31468,11 +31468,11 @@ MonoBehaviour:
   berriesCollected: 0
   berryScore: {fileID: 22866063}
   darkBerryScore: {fileID: 569538141}
-  fruitSFX: {fileID: 0}
-  deathSFX: {fileID: 0}
-  jumpSFX: {fileID: 0}
+  fruitSFX: {fileID: 8300000, guid: c131d9cc0b2fa64468a8ece54745741e, type: 3}
+  deathSFX: {fileID: 8300000, guid: 7e6864a10bd28f447a9de5f9d91798d5, type: 3}
+  jumpSFX: {fileID: 8300000, guid: 8d37a5bbf612a1b4a9c2b8f0021425e5, type: 3}
   goalSFX: {fileID: 0}
-  doubleJumpSFX: {fileID: 0}
+  doubleJumpSFX: {fileID: 8300000, guid: 6d4c47d5782ba1545a0f70bb6f4887d9, type: 3}
 --- !u!61 &1559543770
 BoxCollider2D:
   m_ObjectHideFlags: 0
