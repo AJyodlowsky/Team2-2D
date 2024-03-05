@@ -31,6 +31,10 @@ public class PlayerController : MonoBehaviour
     public AudioClip goalSFX;
     public AudioClip doubleJumpSFX;
 
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     void Update()
     {
         berryScore.text = "Score: " + berriesCollected;
@@ -46,9 +50,9 @@ public class PlayerController : MonoBehaviour
        
         if (Input.GetButtonDown("Jump"))
         {
+            animator.SetBool("IsJumping", true);
             audioSource.clip = jumpSFX;
             audioSource.Play();
-            animator.SetBool("IsJumping", true);
             if (IsGrounded() || doubleJump)
             {
                 
