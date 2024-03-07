@@ -59,5 +59,12 @@ public class UIController : MonoBehaviour
                 SceneManager.LoadScene("MainMenu");
             }
         }
+        if (currentSceneName == "Credits")
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                SceneManager.LoadScene("MainMenu");
+            }
+        }
     }
 }
