@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     {
         darkMode.SetActive(false);
         lightMode.SetActive(true);
+        
     }
 
     // Update is called once per frame
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Dark Mode Was Activated");
             darkMode.SetActive(true);
             lightMode.SetActive(false);
+            
 
         }
         if (Input.GetKeyDown(deactivatedarkToggleKey))
@@ -35,6 +37,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Dark Mode Was Activated");
             darkMode.SetActive(false);
             lightMode.SetActive(true);
+            
         }
 
     }
