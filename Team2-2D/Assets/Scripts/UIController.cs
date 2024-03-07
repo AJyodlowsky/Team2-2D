@@ -35,6 +35,11 @@ public class UIController : MonoBehaviour
         SceneManager.LoadScene("Credits");
     }
 
+    public void OnClickMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
     private void Update()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
@@ -42,6 +47,14 @@ public class UIController : MonoBehaviour
         if (currentSceneName == "HELP")
         {
             if(Input.GetKeyDown(KeyCode.Q))
+            {
+                SceneManager.LoadScene("MainMenu");
+            }
+        }
+
+        if(currentSceneName == "LevelTwo")
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
                 SceneManager.LoadScene("MainMenu");
             }
