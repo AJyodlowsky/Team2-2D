@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
 {
    
     private float horizontal;
-    private float speed = 5f;
+    [SerializeField] private float speed = 5f;
     private float jumpingPower = 5f;
     private bool isFacingRight = true;
     public Animator animator;
