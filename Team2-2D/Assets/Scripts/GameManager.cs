@@ -5,15 +5,16 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject darkMode;
-    [SerializeField] private GameObject lightMode;
+    [SerializeField] private GameObject darkMode, lightMode, killerGohst;
     [SerializeField] private KeyCode activatedarkToggleKey = KeyCode.P;
     [SerializeField] private KeyCode deactivatedarkToggleKey = KeyCode.O;
-    
-    
+    public Animator animator;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        DisableEnableDarkModeGohst();
         darkMode.SetActive(false);
         lightMode.SetActive(true);
         
@@ -25,24 +26,32 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(activatedarkToggleKey))
         {
 
-            Debug.Log("Dark Mode Was Activated");
+            Invoke("EnableDarkModeGohst", 1f);
             darkMode.SetActive(true);
             lightMode.SetActive(false);
-            
+            animator.SetBool("GohstNoMore", false);
 
         }
         if (Input.GetKeyDown(deactivatedarkToggleKey))
         {
-
-            Debug.Log("Dark Mode Was Activated");
+            Invoke("DisableEnableDarkModeGohst", 1f);
             darkMode.SetActive(false);
             lightMode.SetActive(true);
-            
+            animator.SetBool("GohstNoMore", true);
         }
 
     }
+    void EnableDarkModeGohst()
+    {
+        killerGohst.SetActive(true);
+    }
+    void DisableEnableDarkModeGohst()
+    {
 
-    
+        killerGohst.SetActive(false);
+    }
+
+
 }
    
 

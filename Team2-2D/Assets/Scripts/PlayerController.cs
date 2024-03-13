@@ -22,23 +22,23 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private int berriesCollected;
-    //[SerializeField] private TMP_Text berryScore;
-    //[SerializeField] private TMP_Text darkBerryScore;
-    //private AudioSource audioSource;
-    //public AudioClip fruitSFX;
-    //public AudioClip deathSFX;
-    //public AudioClip jumpSFX;
-    //public AudioClip goalSFX;
-    //public AudioClip doubleJumpSFX;
+    [SerializeField] private TMP_Text berryScore;
+    [SerializeField] private TMP_Text darkBerryScore;
+    private AudioSource audioSource;
+    public AudioClip fruitSFX;
+    public AudioClip deathSFX;
+    public AudioClip jumpSFX;
+    public AudioClip goalSFX;
+    public AudioClip doubleJumpSFX;
 
     void Start()
     {
-        //audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
     void Update()
     {
-        //berryScore.text = "Score: " + berriesCollected;
-        //darkBerryScore.text = "Score: " + berriesCollected;
+        berryScore.text = "Score: " + berriesCollected;
+        darkBerryScore.text = "Score: " + berriesCollected;
         horizontal = Input.GetAxisRaw("Horizontal");
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
         if (IsGrounded() && !Input.GetButton("Jump"))
@@ -51,8 +51,8 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             animator.SetBool("IsJumping", true);
-            //audioSource.clip = jumpSFX;
-            //audioSource.Play();
+            audioSource.clip = jumpSFX;
+            audioSource.Play();
             if (IsGrounded() || doubleJump)
             {
                 
@@ -61,8 +61,8 @@ public class PlayerController : MonoBehaviour
                 doubleJump = !doubleJump;
                 if (!doubleJump)
                 {
-                    //audioSource.clip = doubleJumpSFX;
-                    //audioSource.Play();
+                    audioSource.clip = doubleJumpSFX;
+                    audioSource.Play();
                     animator.SetBool("IsJumping", false);
                     animator.SetBool("IsDoubleJump", true);
                 }
@@ -107,23 +107,23 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Berry")
         {
             other.gameObject.SetActive(false);
-            //berriesCollected++;
-            //audioSource.clip = fruitSFX;
-            //audioSource.Play();
+            berriesCollected++;
+            audioSource.clip = fruitSFX;
+            audioSource.Play();
         }
         if (other.gameObject.tag == "Hazard") 
         {
             Invoke("DeathTransiton", 1.0f);
             animator.SetBool("IsDead", true);
-            //audioSource.clip = deathSFX;
-            //audioSource.Play();
+            audioSource.clip = deathSFX;
+            audioSource.Play();
         }
         if (other.gameObject.tag == "Goal" && berriesCollected == 3)
         {
             Invoke("LevelTransiton", 1.0f);
             animator.SetBool("HasWon", true);
-            //audioSource.clip = goalSFX;
-            //audioSource.Play();
+            audioSource.clip = goalSFX;
+            audioSource.Play();
         }
     }
     void LevelTransiton() 
