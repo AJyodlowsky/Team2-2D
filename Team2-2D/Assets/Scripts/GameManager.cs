@@ -11,6 +11,10 @@ public class GameManager : MonoBehaviour
     public Animator animator;
 
 
+    //JAY PUT THIS HERE
+    public GameObject darkBackground;
+    public GameObject lightBackground;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +35,10 @@ public class GameManager : MonoBehaviour
             lightMode.SetActive(false);
             animator.SetBool("GohstNoMore", false);
 
+            //JAY PUT THIS IN HERE
+            darkBackground.SetActive(true);
+            lightBackground.SetActive(false);
+
         }
         if (Input.GetKeyDown(deactivatedarkToggleKey))
         {
@@ -38,6 +46,10 @@ public class GameManager : MonoBehaviour
             darkMode.SetActive(false);
             lightMode.SetActive(true);
             animator.SetBool("GohstNoMore", true);
+
+            //JAY PUT THIS HERE
+            darkBackground.SetActive(false);
+            lightBackground.SetActive(true);
         }
 
     }

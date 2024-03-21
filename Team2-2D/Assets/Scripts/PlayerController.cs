@@ -143,7 +143,16 @@ public class PlayerController : MonoBehaviour
     }
     void LevelTransiton() 
     {
-        SceneManager.LoadScene("LevelTwo");
+        //JAY WROTE THIS
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        if (currentSceneName == "LevelOne")
+        {
+            SceneManager.LoadScene("LevelTwo");
+        }
+        if(currentSceneName == "LevelTwo")
+        {
+            SceneManager.LoadScene("WIN");
+        }
     }
     void DeathTransiton()
     {
