@@ -50,14 +50,6 @@ public class UIController : MonoBehaviour
                 SceneManager.LoadScene("MainMenu");
             }
         }
-
-        if(currentSceneName == "LevelTwo")
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                SceneManager.LoadScene("MainMenu");
-            }
-        }
         if (currentSceneName == "Credits")
         {
             if (Input.GetKeyDown(KeyCode.Q))
