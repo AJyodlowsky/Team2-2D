@@ -19,10 +19,9 @@ public class UIController : MonoBehaviour
 
     public void OnClickQuit()
     {
-        Debug.Log("Quit button was clicked");
+        Debug.Log("Quit");
         Application.Quit();
     }
-
 
     public void OnClickHELP()
     {
@@ -65,6 +64,12 @@ public class UIController : MonoBehaviour
             {
                 SceneManager.LoadScene("MainMenu");
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Debug.Log("Quit button was clicked");
+            Application.Quit();
         }
     }
 }
