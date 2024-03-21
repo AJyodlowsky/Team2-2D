@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
+using Cinemachine;
 
 //Written by Jancy
 
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private GameObject _startingSceneTransistion;
     [SerializeField] private GameObject _endingSceneTransistion;
+    [SerializeField] private GameObject virtualCineCamrea;
     private float horizontal;
     [SerializeField] private float speed = 5f;
     private float jumpingPower = 5f;
@@ -110,6 +112,12 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.gameObject.tag == "DeathPit")
+        {
+            //animator.SetBool("FellInDeathPit", true);
+            virtualCineCamrea.SetActive(false);
+            Debug.Log("Player has fallen in the death pit");
+        }
         if (other.gameObject.tag == "Berry")
         {
             other.gameObject.SetActive(false);
