@@ -11,7 +11,8 @@ using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
-   
+    [SerializeField] private GameObject _startingSceneTransistion;
+    [SerializeField] private GameObject _endingSceneTransistion;
     private float horizontal;
     [SerializeField] private float speed = 5f;
     private float jumpingPower = 5f;
@@ -33,6 +34,8 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        _endingSceneTransistion.SetActive(false);
+        _startingSceneTransistion.SetActive(true);
         audioSource = GetComponent<AudioSource>();
     }
     void Update()
@@ -82,7 +85,10 @@ public class PlayerController : MonoBehaviour
         Flip();
         
     }
-
+    private void DisableStartingSceneTransition()
+    {
+        _startingSceneTransistion.SetActive(false);
+    }
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
@@ -120,6 +126,7 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.tag == "Goal" && berriesCollected == 3)
         {
+            _endingSceneTransistion.SetActive(true);
             Invoke("LevelTransiton", 1.0f);
             animator.SetBool("HasWon", true);
             audioSource.clip = goalSFX;
