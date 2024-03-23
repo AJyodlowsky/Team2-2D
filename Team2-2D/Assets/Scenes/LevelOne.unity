@@ -12258,9 +12258,25 @@ PrefabInstance:
       value: 0.7176471
       objectReference: {fileID: 0}
     - target: {fileID: 5836190547006461588, guid: de2fa7b4a9ba3e2419bb45973c00f75a, type: 3}
+      propertyPath: jumpSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 83644fe10fc7b9f47ba68070bf3c4d07, type: 3}
+    - target: {fileID: 5836190547006461588, guid: de2fa7b4a9ba3e2419bb45973c00f75a, type: 3}
+      propertyPath: deathSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 00c81783b6274e049b884b15c1197c99, type: 3}
+    - target: {fileID: 5836190547006461588, guid: de2fa7b4a9ba3e2419bb45973c00f75a, type: 3}
+      propertyPath: fruitSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: a33c81c7fb7665b49b95b36d3f189b0e, type: 3}
+    - target: {fileID: 5836190547006461588, guid: de2fa7b4a9ba3e2419bb45973c00f75a, type: 3}
       propertyPath: berryScore
       value: 
       objectReference: {fileID: 2010149277}
+    - target: {fileID: 5836190547006461588, guid: de2fa7b4a9ba3e2419bb45973c00f75a, type: 3}
+      propertyPath: doubleJumpSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 93c873c30b56d6f4c89f107aed7ca62a, type: 3}
     - target: {fileID: 5836190547006461588, guid: de2fa7b4a9ba3e2419bb45973c00f75a, type: 3}
       propertyPath: darkBerryScore
       value: 
