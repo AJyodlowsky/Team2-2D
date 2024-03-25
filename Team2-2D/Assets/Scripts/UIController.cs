@@ -43,21 +43,13 @@ public class UIController : MonoBehaviour
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
 
-        if (currentSceneName == "HELP")
-        {
-            if(Input.GetKeyDown(KeyCode.Q))
-            {
-                SceneManager.LoadScene("MainMenu");
-            }
-        }
-        if (currentSceneName == "Credits")
+        if (currentSceneName == "Credits" || currentSceneName == "HELP" || currentSceneName == "WIN")
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 SceneManager.LoadScene("MainMenu");
             }
         }
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Debug.Log("Quit button was clicked");

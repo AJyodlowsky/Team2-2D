@@ -686,10 +686,30 @@ PrefabInstance:
       propertyPath: m_BackGroundColor.r
       value: 0.7176471
       objectReference: {fileID: 0}
+    - target: {fileID: 3852984364228620739, guid: de2fa7b4a9ba3e2419bb45973c00f75a, type: 3}
+      propertyPath: m_GravityScale
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5836190547006461588, guid: de2fa7b4a9ba3e2419bb45973c00f75a, type: 3}
+      propertyPath: jumpSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 83644fe10fc7b9f47ba68070bf3c4d07, type: 3}
+    - target: {fileID: 5836190547006461588, guid: de2fa7b4a9ba3e2419bb45973c00f75a, type: 3}
+      propertyPath: deathSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 00c81783b6274e049b884b15c1197c99, type: 3}
+    - target: {fileID: 5836190547006461588, guid: de2fa7b4a9ba3e2419bb45973c00f75a, type: 3}
+      propertyPath: fruitSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: a33c81c7fb7665b49b95b36d3f189b0e, type: 3}
     - target: {fileID: 5836190547006461588, guid: de2fa7b4a9ba3e2419bb45973c00f75a, type: 3}
       propertyPath: berryScore
       value: 
       objectReference: {fileID: 977248102}
+    - target: {fileID: 5836190547006461588, guid: de2fa7b4a9ba3e2419bb45973c00f75a, type: 3}
+      propertyPath: doubleJumpSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 93c873c30b56d6f4c89f107aed7ca62a, type: 3}
     - target: {fileID: 5836190547006461588, guid: de2fa7b4a9ba3e2419bb45973c00f75a, type: 3}
       propertyPath: darkBerryScore
       value: 
@@ -958,7 +978,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9217073883064159220, guid: caa1135f2b687c649bac819c054a9f4d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.6
+      value: -2.21
       objectReference: {fileID: 0}
     - target: {fileID: 9217073883064159220, guid: caa1135f2b687c649bac819c054a9f4d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6295,7 +6315,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -839690237
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e7b8a49d63a067448bf1d0fd9742e785, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -6441,7 +6461,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -839690237
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2e1717b9cab94a54c8a71bc766c05758, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -6468,7 +6488,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8020269624475864539, guid: 91ae13d670ebaea46851675aa372c248, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.6377361
+      value: -1.22
       objectReference: {fileID: 0}
     - target: {fileID: 8020269624475864539, guid: 91ae13d670ebaea46851675aa372c248, type: 3}
       propertyPath: m_LocalPosition.z

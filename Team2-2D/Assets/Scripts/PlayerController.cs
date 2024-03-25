@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject virtualCineCamrea;
     private float horizontal;
     [SerializeField] private float speed = 5f;
-    private float jumpingPower = 5f;
+    private float jumpingPower = 6.2f;
     private bool isFacingRight = true;
     public Animator animator;
     private bool doubleJump;
