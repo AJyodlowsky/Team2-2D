@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private KeyCode activatedarkToggleKey = KeyCode.P;
     [SerializeField] private KeyCode deactivatedarkToggleKey = KeyCode.O;
     public Animator animator;
-
+    private AudioSource audioSource;
+    public AudioClip switchSFX;
 
     //JAY PUT THIS HERE
     public GameObject darkBackground;
@@ -21,7 +22,7 @@ public class GameManager : MonoBehaviour
         DisableEnableDarkModeGohst();
         darkMode.SetActive(false);
         lightMode.SetActive(true);
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -29,7 +30,8 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(activatedarkToggleKey))
         {
-
+            audioSource.clip = switchSFX;
+            audioSource.Play();
             Invoke("EnableDarkModeGohst", 1f);
             darkMode.SetActive(true);
             lightMode.SetActive(false);
@@ -42,6 +44,8 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetKeyDown(deactivatedarkToggleKey))
         {
+            audioSource.clip = switchSFX;
+            audioSource.Play();
             Invoke("DisableEnableDarkModeGohst", 1f);
             darkMode.SetActive(false);
             lightMode.SetActive(true);

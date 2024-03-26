@@ -125,7 +125,8 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.tag == "DeathPit")
         {
-            Invoke("PlayDeathAnim", 1f);
+            Invoke("PlayDeathAnim", 1.0f);
+            Invoke("GameOver", 2f);
             lightPitBackGround.SetActive(true);
             darkPitBackGround.SetActive(true);
             virtualCineCamrea.SetActive(false);
@@ -183,7 +184,6 @@ public class PlayerController : MonoBehaviour
     }
     void PlayDeathAnim()
     {
-        _endingSceneTransistion.SetActive(true);
         deathAnimation.SetActive(true);
     }
     void GameOver()
