@@ -12,11 +12,11 @@ using Cinemachine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private GameObject _startingSceneTransistion;
-    [SerializeField] private GameObject _endingSceneTransistion;
+    [SerializeField] private GameObject _startingSceneTransistion, _endingSceneTransistion;
+    [SerializeField] private GameObject deathAnimation, lightPitBackGround, darkPitBackGround, howToReadSignText, signText;
     [SerializeField] private GameObject virtualCineCamrea;
     private float horizontal;
-    [SerializeField] private float speed = 5f;
+    [SerializeField] private float speed = 5f, minSpeedToPlaySound = 0.1f;
     private float jumpingPower = 6.2f;
     private bool isFacingRight = true;
     public Animator animator;
@@ -25,19 +25,21 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private int berriesCollected;
-    [SerializeField] private TMP_Text berryScore;
-    [SerializeField] private TMP_Text darkBerryScore;
+    [SerializeField] private TMP_Text berryScore, darkBerryScore;
+    [SerializeField] private bool isColliding = false;
     private AudioSource audioSource;
-    public AudioClip fruitSFX;
-    public AudioClip deathSFX;
-    public AudioClip jumpSFX;
-    public AudioClip goalSFX;
-    public AudioClip doubleJumpSFX;
+    public AudioClip fruitSFX, deathSFX, jumpSFX, goalSFX, doubleJumpSFX;
 
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+        signText.SetActive(false);
+        howToReadSignText.SetActive(false);
         _endingSceneTransistion.SetActive(false);
-        _startingSceneTransistion.SetActive(true);
+        //_startingSceneTransistion.SetActive(true);
+        deathAnimation.SetActive(false);
+        lightPitBackGround.SetActive(false);
+        darkPitBackGround.SetActive(false);
         audioSource = GetComponent<AudioSource>();
     }
     void Update()
@@ -46,6 +48,10 @@ public class PlayerController : MonoBehaviour
         darkBerryScore.text = "Score: " + berriesCollected;
         horizontal = Input.GetAxisRaw("Horizontal");
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
+        if (Input.GetKeyDown(KeyCode.Z) && isColliding)
+        {
+            signText.SetActive(!signText.activeSelf);
+        }
         if (IsGrounded() && !Input.GetButton("Jump"))
         {
             animator.SetBool("IsDoubleJump", false);
@@ -112,11 +118,17 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.gameObject.tag == "Info")
+        {
+            isColliding = true;
+            howToReadSignText.SetActive(true);
+        }
         if (other.gameObject.tag == "DeathPit")
         {
-            //animator.SetBool("FellInDeathPit", true);
+            Invoke("PlayDeathAnim", 1f);
+            lightPitBackGround.SetActive(true);
+            darkPitBackGround.SetActive(true);
             virtualCineCamrea.SetActive(false);
-            Debug.Log("Player has fallen in the death pit");
         }
         if (other.gameObject.tag == "Berry")
         {
@@ -134,11 +146,21 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.tag == "Goal" && berriesCollected == 3)
         {
-            _endingSceneTransistion.SetActive(true);
-            Invoke("LevelTransiton", 1.0f);
+            Invoke("GameOver", 1.0f);
+            Invoke("LevelTransiton", 2.0f);
             animator.SetBool("HasWon", true);
             audioSource.clip = goalSFX;
             audioSource.Play();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.gameObject.tag == "Info")
+        {
+            isColliding = false;
+            howToReadSignText.SetActive(false);
+            
         }
     }
     void LevelTransiton() 
@@ -158,5 +180,14 @@ public class PlayerController : MonoBehaviour
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
+    }
+    void PlayDeathAnim()
+    {
+        _endingSceneTransistion.SetActive(true);
+        deathAnimation.SetActive(true);
+    }
+    void GameOver()
+    {
+        _endingSceneTransistion.SetActive(true);
     }
 }

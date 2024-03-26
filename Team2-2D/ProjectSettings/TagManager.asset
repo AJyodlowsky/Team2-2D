@@ -11,6 +11,7 @@ TagManager:
   - Dark
   - Goal
   - DeathPit
+  - Info
   layers:
   - Default
   - TransparentFX
