@@ -140,7 +140,7 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.tag == "Hazard") 
         {
-            Invoke("DeathTransiton", 1.0f);
+            Invoke("DeathTransiton", 1.25f);
             animator.SetBool("IsDead", true);
             audioSource.clip = deathSFX;
             audioSource.Play();

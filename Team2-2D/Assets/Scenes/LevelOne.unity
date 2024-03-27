@@ -159,7 +159,7 @@ MonoBehaviour:
   activatedarkToggleKey: 112
   deactivatedarkToggleKey: 111
   animator: {fileID: 582907009}
-  switchSFX: {fileID: 0}
+  switchSFX: {fileID: 8300000, guid: 141513df8636cea42a914817e8c07098, type: 3}
   darkBackground: {fileID: 1414160859}
   lightBackground: {fileID: 22675313}
 --- !u!4 &1358395
@@ -188,7 +188,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 141513df8636cea42a914817e8c07098, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -753,7 +753,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8103f20e4dd3b94f9261efab2882d72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  darkMusic: {fileID: 0}
 --- !u!82 &428510807
 AudioSource:
   m_ObjectHideFlags: 0
@@ -766,7 +765,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 565e6077d1b996242a68a4aea0501039, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -899,7 +898,6 @@ Transform:
   - {fileID: 1550578898}
   - {fileID: 1535681641}
   - {fileID: 1013030102}
-  - {fileID: 1308722742}
   - {fileID: 490242584}
   - {fileID: 428510805}
   m_Father: {fileID: 0}
@@ -6469,11 +6467,6 @@ Transform:
   - {fileID: 2102940552}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1308722742 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4530065460595599956, guid: 2da27374f9c4926439732b3b2867f21d, type: 3}
-  m_PrefabInstance: {fileID: 1766360542944701985}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1376715279
 GameObject:
   m_ObjectHideFlags: 0
@@ -6749,7 +6742,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3572baa24c6c8e40a9f20d26b9ebc45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightMusic: {fileID: 0}
 --- !u!82 &1537634217
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6762,7 +6754,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b492e0df4c27f3d41893ce22b4a6f3b4, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -13126,7 +13118,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 483968877}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 491320126258500029, guid: 2da27374f9c4926439732b3b2867f21d, type: 3}
       propertyPath: m_Name
@@ -13134,15 +13126,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4530065460595599956, guid: 2da27374f9c4926439732b3b2867f21d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.75
+      value: 21.92709
       objectReference: {fileID: 0}
     - target: {fileID: 4530065460595599956, guid: 2da27374f9c4926439732b3b2867f21d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.75
+      value: 4.704583
       objectReference: {fileID: 0}
     - target: {fileID: 4530065460595599956, guid: 2da27374f9c4926439732b3b2867f21d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.08814475
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4530065460595599956, guid: 2da27374f9c4926439732b3b2867f21d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13200,6 +13192,10 @@ PrefabInstance:
     - target: {fileID: 3852984364228620739, guid: de2fa7b4a9ba3e2419bb45973c00f75a, type: 3}
       propertyPath: m_GravityScale
       value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4109268188165363879, guid: de2fa7b4a9ba3e2419bb45973c00f75a, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5836190547006461588, guid: de2fa7b4a9ba3e2419bb45973c00f75a, type: 3}
       propertyPath: jumpSFX
@@ -13505,6 +13501,7 @@ SceneRoots:
   - {fileID: 1358395}
   - {fileID: 885736730}
   - {fileID: 1970552940}
+  - {fileID: 1766360542944701985}
   - {fileID: 483968877}
   - {fileID: 1376715280}
   - {fileID: 2278683725375719190}
