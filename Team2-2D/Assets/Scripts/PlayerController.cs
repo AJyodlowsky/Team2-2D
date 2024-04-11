@@ -13,7 +13,7 @@ using Cinemachine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private GameObject _startingSceneTransistion, _endingSceneTransistion;
-    [SerializeField] private GameObject deathAnimation, lightPitBackGround, darkPitBackGround, howToReadSignText, signText;
+    [SerializeField] private GameObject deathAnimation, lightPitBackGround, darkPitBackGround, howToReadSignText, signText, goalEffectObject;
     [SerializeField] private GameObject virtualCineCamrea;
     private float horizontal;
     [SerializeField] private float speed = 5f, minSpeedToPlaySound = 0.1f;
@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        goalEffectObject.SetActive(false);
         signText.SetActive(false);
         howToReadSignText.SetActive(false);
         _endingSceneTransistion.SetActive(false);
@@ -91,6 +92,11 @@ public class PlayerController : MonoBehaviour
             
         }
         Flip();
+
+        if (berriesCollected == 3)
+        {
+            goalEffectObject.SetActive(true);
+        }
         
     }
     private void DisableStartingSceneTransition()
